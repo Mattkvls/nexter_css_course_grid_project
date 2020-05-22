@@ -1,0 +1,34 @@
+.features{
+    background-color:$color-grey-light-2;
+    grid-column:center-start / center-end;
+
+    margin: 15rem 0;
+
+    //the features is a grid item. We want to have a grid inside the grid item.
+    //NEW GRID INSIDE THE FEATURES
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    //grid-template-rows:auto auto; // 2rows is not necessary. Aν δεν το γραψουμε θα δημιουργηθει εινα implicit grid 
+    grid-gap:6rem;
+}
+
+//ειναι reusable component
+.feature{
+    //create a grid inside to place the each element where you want 
+    display: grid;
+    //we want the svg column to have the width of the its content. The svg grid item should have 4.5rem we use the auto or the min-content. The other column will be the rest so we use fr 
+    grid-template-columns: min-content 1fr;
+
+    &__icon{
+        //is an svg icon to change the color use the fill property 
+        fill: $color-primary;
+        width:4.5rem;
+        height: 4.5rem;
+        //make the icon span so the height of the heading is the height of the content of the heading and not the icons 
+        grid-row: 1/span 2;
+    }
+    &__text{
+        font-size: 1.7rem;
+        grid-column: 2/3;
+    }
+}

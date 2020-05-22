@@ -28,7 +28,36 @@ html{
     box-sizing: border-box;
 }
 
-//why we set the font-family to the body and not to the html ??
+//Q: why we set the font-family to the body and not to the html ??
+//A: Best practice is to set it to the body with !important keyword.
 body{
-    font-family: $font-primary;
+    font-family: $font-primary !important;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height:1.6; //Use unitless number --> multiplied by the element's own font size. 
+}
+
+//GRID 
+.container{
+    display:grid;
+
+    //DEFINE THE ROWS 
+        //η πρωτη θελουμε να ειναι 80% του viewporthight 
+        // η δευτερη θελουμε περιεχει τα features και να μεγαλωνει όσο μεγαλωνει το παραθυρο min-content / θα μπορουσαμε και auto σημαινει οτι adapts το content. 
+        // τριτη row ειναι vw οσο μειωνουμε το viewportwidth it adapts.
+        // τεταρτη- πεμτη- εκτη row θα πρεπει να έχει και αυτη το υψος του content του. Ετσι δεν βάζουμε static value αλλα min-content. 
+    grid-template-rows: 80vh min-content 40vw repeat(3,min-content) ;// θα μπορουσαμε να γραψουμε και auto αντι για το min-content. Eιναι το ιδιο θα προσαρμοζοταν στο περιεχομενο
+
+    //DEFINE THE COLUMNS 
+        //Συχνα τα columns ειναι predefined 8 -12-16 columns. Παραδειγμα το bootsrap εχει την ιδια λογικη και εχει 12 columns predefined.
+        //η sidebar θα εχει 8rem το repeat ειναι για τα main 8 columns που θα ειναι στο κεντρο για τα features.
+        //to center the 8 columns between the sidebar and the end of the page on the right --> we add 2 more columns on each side and occupy the rest of the space 1fr each.
+        //we name the column tracks. Full-start/ end is where the full bleed "για τα sections που ειναι full"
+        grid-template-columns:[sidebar-start]8rem [sidebar-end full-start] minmax(6rem,1fr) [center-start] repeat(8, [col-start] minmax(min-content,14rem)[col-end])[center-end ] minmax(6rem,1fr)[full-end];
+
+
+
+        //grid-auto-rows: ;
+        //define gap
+    
 }
