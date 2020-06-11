@@ -1,31 +1,55 @@
 .features{
-    background-color:$color-grey-light-2;
+    //background-color:$color-grey-light-2;
     grid-column:center-start / center-end;
 
     margin: 15rem 0;
 
     //the features is a grid item. We want to have a grid inside the grid item.
-    //NEW GRID INSIDE THE FEATURES
+    //NEW GRID
     display: grid;
-    grid-template-columns:repeat(3,1fr);
-    //grid-template-rows:auto auto; // 2rows is not necessary. Aν δεν το γραψουμε θα δημιουργηθει εινα implicit grid 
+
+//the first way was the above. In order to make it responsive without media queries we do the second way.
+//grid-template-columns:repeat(3,1fr);
+    //grid-template-rows:auto auto; // is not necessary. Aν δεν το γραψουμε θα δημιουργηθει εινα implicit grid 
+
+    //NEW second way to create the column tracks. we use the auto-fit
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); //the width of the column track should stay between 25rem and 1 fr (fractional unit)
+//base the above css will place as many tracks as they fit in the container. 
+
     grid-gap:6rem;
+    align-items:start; //move all the content to the top. We do it to the feature grid container 
 }
 
-//ειναι reusable component
+//The feature is indipendent and reusable component. That is why we place it outside of the features.
 .feature{
-    //create a grid inside to place the each element where you want 
+    //create a grid inside every feature. So to place the each element where you want 
+
     display: grid;
+
     //we want the svg column to have the width of the its content. The svg grid item should have 4.5rem we use the auto or the min-content. The other column will be the rest so we use fr 
+
     grid-template-columns: min-content 1fr;
+
+    //add gap between the rows 
+
+    grid-row-gap:1.5rem;
+
+    //add gap for the columns
+
+    grid-column-gap:2.5rem;
 
     &__icon{
         //is an svg icon to change the color use the fill property 
         fill: $color-primary;
         width:4.5rem;
         height: 4.5rem;
+
         //make the icon span so the height of the heading is the height of the content of the heading and not the icons 
-        grid-row: 1/span 2;
+
+        grid-row: 1/span 2; //-1 means the end of the explicit grid 
+        
+        //move the icons a bit heigher than the headings. So to center the center of the icon and the heading
+        transform: translateY(-1rem);
     }
     &__text{
         font-size: 1.7rem;
