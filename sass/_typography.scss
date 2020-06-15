@@ -9,6 +9,7 @@
     @extend %heading;
     font-size: 4rem;
     font-style: italic;
+    line-height: 1; //will help us with the heading at the right story part. when it folds to two lines the space between the lines was huge due to the line-height: 1.6; we gave to the body
 
     &--light{color: $color-grey-light-1;}
     &--dark{color: $color-grey-dark-1;}
@@ -30,3 +31,28 @@
         color: $color-grey-dark-1;
     }
 }
+
+//he styles the button to the typography. Usually we do it as a inividual component 
+.btn{
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    border-radius:0;
+    font-family: $font-display;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding:1.8rem 3rem;
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:hover{
+        background-color: $color-primary-dark;
+    }
+}
+
+//helper classes 
+//margin-bottom classes 
+.mb-sm{margin-bottom: 2rem;}
+.mb-md{margin-bottom: 3rem;}
+.mb-lg{margin-bottom: 4rem;}
+.mb-hg{margin-bottom: 8rem;}
