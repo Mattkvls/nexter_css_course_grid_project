@@ -12,32 +12,89 @@
 .home{
     background-color:$color-grey-light-1;
 
+    //make each home container a grid container
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    //add a littile row gap due to the title that overlaps the image 
+    grid-row-gap:3.5rem;
+
     &__img{
         width: 100%;
+        grid-column: 1/3;
+        grid-row: 1/2;
+        z-index: 1;
     }
 
     &__like{
-
+        height: 2.5rem;
+        width: 2.5rem;
+        grid-row: 1/2;
+        grid-column: 2/3;
+        justify-self: end;
+        z-index: 2;
+        margin: 1rem; //to push it down and left
+        
     }
 
     &__name{
+        grid-column: 1/3;
 
+        //we make it have smaller width 
+        width: 80%;
+        //horizontally aligned inside its grid cell 
+        justify-self: center;
+
+        //move it one row up with overlapping 
+        grid-row: 1/2;
+
+        z-index: 3;
+
+        //vertically align it to fix that it covers all the image due to default stretch 
+        align-self: flex-end;
+
+        font-family: $font-display;
+        font-size: 1.6rem;
+        text-align: center;
+        padding: 1.5rem;
+        background-color: $color-secondary;
+        color: #fff;
+        font-weight: 400;
+        //move it down a little 
+        transform: translateY(50%);//the percentage corresponds to 50% of the height of the element 
+        
     }
 
 //icons 
+    //add a little space under the title 
+    &__location,
+    &__rooms{
+        margin-top: 2.5rem;
+    }
+
     &__location,
     &__rooms,
     &__area,
     &__price{
+        font-size: 1.5rem;
+        margin-left: 2rem;
+
+        //make the icons and the text under them to be side by side 
+        display: flex;
+        align-items: center; //make the centered vertically
+
         svg{
             //the svg is as nested elements 
             fill: $color-primary;
             height: 2rem;
             width: 2rem;
+            margin-right: 1rem;// give a small gap to between icon and text 
+            //because we dont have gap properties in the flexbox
         }
 
-        p{
+    }
 
-        }
+    &__btn{
+        grid-column: 1/-1;
     }
 }
