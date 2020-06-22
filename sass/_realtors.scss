@@ -1,4 +1,33 @@
 .realtors{
     background-color:$color-secondary;
     grid-column:col-start 7/ full-end;
+    padding: 3rem;
+
+    //make the realtors a grid container so we can center the items inside bot horizontally and vertically 
+    display: grid;
+//We make the realtors container a grid and then we want to align the tracks horizontally and vertically! align-content and justify-content center
+    align-content: center;
+    justify-content: center;
+
+    grid-row-gap: 2rem;// space between the title and realtors
+    justify-items: center;//centers the title only.
+
+    &__list{
+        display: grid;
+        grid-template-columns:min-content max-content;
+        grid-column-gap: 2rem;
+        grid-row-gap:5vh;//will chnage each time we change the viewport height 
+        align-items: center;// will align vertically the images and the text
+        //align-content: space-around;
+    }
+    &__img{
+        width: 7rem;
+        border-radius: 50%;
+        display: block;// is good to display images as a block
+    }
+    &__sold{
+        text-transform: uppercase;
+        color: $color-grey-light-2;
+        margin-top: -3px;// we can use transform but negative margin does the job 
+    }
 }

@@ -4,4 +4,37 @@
     //grid 
     grid-column:sidebar-start/sidebar-end;
     grid-row:1/-1;
+
+       //center the navigation button 
+       display: flex;
+       justify-content: center;
+}
+.nav-btn{
+    //its a button 
+    border: none;
+    border-radius: 0;
+
+    //we will create the button with before and after pseudo elements
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+    margin-top: 4rem;
+    
+
+    &::before,
+    &::after{
+        background-color: #fff;
+        height: 2px;
+        width: 4.5rem;
+        content:"";
+        display: block;
+    }
+
+    //move one up and the other down 
+    &::before{
+        transform: translateY(-1.5rem);
+    }
+    &::after{
+        transform: translateY(1.3rem);
+    }
 }

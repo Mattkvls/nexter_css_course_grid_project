@@ -1,4 +1,75 @@
 .header{
     background-color: $color-grey-dark-1;
     grid-column:full-start / col-end 6;
+    background-image:linear-gradient(rgba($color-secondary,.93),rgba($color-secondary,.93)), url(../img/hero.jpeg);
+
+    //center the image at the background 
+    background-position: center;
+    background-size: cover;
+
+    padding: 8rem;
+    padding-top: 4rem;
+
+    //make the haeder a grid 
+    display: grid;
+    grid-template-rows: 1fr min-content 6rem 1fr;// will make the first row to take all the available space
+    //the min-content. The row will be sized according to the content.
+
+    grid-template-columns: max-content;// min-contant means the smallest width possible!
+
+    grid-row-gap:1.5rem;
+
+    //center the grid track inside the grid container 
+    justify-content: center;
+    //align-content: center;
+
+    &__btn{
+        align-self:start;
+        justify-self: start;
+    }
+
+    &__logo{
+        height: 3rem;
+        justify-self: center;
+    }
+    &__seenon-text{
+        display: grid;
+        //define the columns 
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 1.5rem;
+        align-items: center;
+        font-size: 1.6rem;
+        color:$color-grey-light-2;
+        &::before,
+        &::after{
+            content: "";
+            height: 1px;
+            //width: 40%;
+            display: block;
+            background-color: currentColor;
+
+        }
+        &::before{
+            margin-right: 2rem;
+        }
+        &::after{
+            margin-left: 2rem;
+        }
+    }
+    &__seenon-logos{
+        //create 4 equal columns 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+
+        //center them inside of their grid cell 
+        justify-items: center;
+
+        img{
+            //give the logos the same height
+            height: 2.5rem;
+            //make the images darker 
+            filter: brightness(70%);
+        }
+    }
 }
