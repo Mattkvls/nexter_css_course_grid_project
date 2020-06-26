@@ -12,16 +12,27 @@
 
     //make the haeder a grid 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;// will make the first row to take all the available space
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;// will make the first row to take all the available space
     //the min-content. The row will be sized according to the content.
 
-    grid-template-columns: max-content;// min-contant means the smallest width possible!
-
+    //grid-template-columns: max-content;// min-contant means the smallest width possible!
+    //the above causes the content to overflow when the window is resized so we change it to minmax(min-content, max-content)
+    grid-template-columns: minmax(min-content, max-content);
     grid-row-gap:1.5rem;
 
     //center the grid track inside the grid container 
     justify-content: center;
     //align-content: center;
+
+
+    //media for 800px make the header goes from start to the end 
+    @media only screen and (max-width:$bp-medium){
+        grid-column: 1/-1;
+    }
+
+    @media only screen and (max-width:$bp-small){
+        padding: 5rem;
+    }
 
     &__btn{
         align-self:start;
@@ -64,6 +75,7 @@
 
         //center them inside of their grid cell 
         justify-items: center;
+        align-items: center;
 
         img{
             //give the logos the same height

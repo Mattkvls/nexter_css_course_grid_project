@@ -12,6 +12,12 @@
     grid-row-gap: 2rem;// space between the title and realtors
     justify-items: center;//centers the title only.
 
+
+    //make the realtors section spans from start to the end 
+    @media only screen and (max-width:$bp-medium){
+        grid-column: 1/-1;
+    }
+
     &__list{
         display: grid;
         grid-template-columns:min-content max-content;
@@ -19,6 +25,16 @@
         grid-row-gap:5vh;//will chnage each time we change the viewport height 
         align-items: center;// will align vertically the images and the text
         //align-content: space-around;
+   
+        //change the grid-template-columns to the small grid of realtos
+        @media only screen and (max-width:$bp-medium){
+            //repeat 3 times because we have 3 realtors
+            grid-template-columns:repeat(3, min-content max-content);
+        }
+        @media only screen and (max-width:$bp-small){
+            grid-template-columns:min-content max-content;
+        }
+    
     }
     &__img{
         width: 7rem;
@@ -31,3 +47,20 @@
         margin-top: -3px;// we can use transform but negative margin does the job 
     }
 }
+
+
+// @media only screen and (max-width:$bp-medium){
+//     .realtors{
+//         .heading-3{
+//             display: none;
+//         }
+//         &__list{
+//             display: flex;
+//             align-content: center;
+//             justify-content: space-around;
+//         }
+//         &__details:not(:last-child){
+//             margin-right: 5rem;
+//         }
+//     }
+// }

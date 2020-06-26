@@ -14,6 +14,12 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+//RESPONISVE BREAKPOINTS
+$bp-largest:75em; //1200px
+$bp-large:62.5em; //1000px change position of the sidebar
+$bp-medium:50em; //800px change position at realtors / story section
+$bp-small:37.5em; //600px 
+
 //basic reset
 *,
 *::before,
@@ -26,6 +32,10 @@ $font-display: 'Josefin Sans', sans-serif;
 html{
     font-size: 62.5%; // 10px/16=62.5% 1rem=10px
     box-sizing: border-box;
+
+    @media only screen and (max-width:$bp-largest){
+        font-size: 50%;
+    }
 }
 
 //Q: why we set the font-family to the body and not to the html ??
@@ -55,9 +65,15 @@ body{
         //we name the column tracks. Full-start/ end is where the full bleed "για τα sections που ειναι full"
         grid-template-columns:[sidebar-start]8rem [sidebar-end full-start] minmax(6rem,1fr) [center-start] repeat(8, [col-start] minmax(min-content,14rem)[col-end])[center-end ] minmax(6rem,1fr)[full-end];
 
+        //change the positio of the sidebar.. move it to the top
+        @media only screen and (max-width:$bp-large){
+            grid-template-rows:6rem 80vh min-content 40vw repeat(3,min-content);
+            grid-template-columns:[full-start] minmax(6rem,1fr) [center-start] repeat(8, [col-start] minmax(min-content,14rem)[col-end])[center-end ] minmax(6rem,1fr)[full-end];
+        }
 
-
-        //grid-auto-rows: ;
-        //define gap
+        @media only screen and (max-width:$bp-medium){
+            //add one row min-content and make the header fill the viewport
+            grid-template-rows:6rem calc(100vh - 6rem);
+        }
     
 }
